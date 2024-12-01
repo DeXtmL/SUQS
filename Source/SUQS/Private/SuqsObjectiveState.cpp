@@ -262,3 +262,15 @@ void USuqsObjectiveState::ChangeStatus(ESuqsObjectiveStatus NewStatus)
 		
 	}
 }
+
+
+const FGameplayTag& USuqsObjectiveState::GetGameplayTag() const
+{
+	return ObjectiveDefinition ? ObjectiveDefinition->gameplayTag : FGameplayTag::EmptyTag;
+
+}
+
+const FGameplayTag& USuqsObjectiveState::AssignGameplayTag(const FGameplayTag& tag)
+{
+	return ((FSuqsObjective*)ObjectiveDefinition)->gameplayTag = tag;
+}

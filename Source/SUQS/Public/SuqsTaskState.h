@@ -6,6 +6,7 @@
 #include "UObject/Object.h"
 #include "SuqsTaskState.generated.h"
 
+struct FGameplayTag;
 class USuqsWaypointComponent;
 UENUM(BlueprintType)
 enum class ESuqsTaskStatus : uint8
@@ -185,4 +186,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 	TArray<USuqsWaypointComponent*> GetWaypoints(bool bOnlyEnabled = true);
 	void FinishLoad();
+
+
+	const FGameplayTag& GetGameplayTag() const;
+	const FGameplayTag& AssignGameplayTag(const FGameplayTag& tag);
+
 };

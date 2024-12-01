@@ -355,4 +355,7 @@ public:
 	void StartLoad();
 	void FinishLoad();
 	bool IsLoading() const { return bIsLoading; }
+
+	const FGameplayTag& GetGameplayTag() const;
+	const FGameplayTag& AssignGameplayTag(const FGameplayTag& tag);
 };

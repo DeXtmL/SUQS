@@ -132,4 +132,7 @@ public:
 	void NotifyTaskStatusChanged(const USuqsTaskState* ChangedTaskOrNull);
 	void NotifyGateOpened(const FName& GateName);
 	void FinishLoad();
+
+	const FGameplayTag& GetGameplayTag() const;
+	const FGameplayTag& AssignGameplayTag(const FGameplayTag& tag);
 };

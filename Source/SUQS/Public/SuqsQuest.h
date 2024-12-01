@@ -3,7 +3,7 @@
 #include "CoreMinimal.h"
 
 #include "Engine/DataTable.h"
-
+#include "GameplayTagContainer.h"
 #include "SuqsQuest.generated.h"
 
 
@@ -53,6 +53,9 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Task")
 	FName ResolveGate;
 
+	// Just a temp hack here, you need to use assign tag to set this field
+	UPROPERTY(Transient)
+	FGameplayTag gameplayTag = FGameplayTag::EmptyTag;
 };
 
 /// A sub-objective of a quest. These objectives are always sequential, but branching can be supported by association with quest branches
@@ -107,6 +110,10 @@ public:
 	/// List of actual tasks that must be performed to complete this objective. 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Objective")
 	TArray<FSuqsTask> Tasks;
+
+	// Just a temp hack here, you need to use assign tag to set this field
+	UPROPERTY(Transient)
+	FGameplayTag gameplayTag = FGameplayTag::EmptyTag;
 
 	/// Attempt to get a task by its identifier
 	const FSuqsTask* FindTask(const FName& Identifier) const;
@@ -195,6 +202,10 @@ public:
 	/// List of objectives involved in the quest. They are all sequential, and mandatory, but may be hidden to provide some branching
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Quest")
 	TArray<FSuqsObjective> Objectives;
+
+	// Just a temp hack here, you need to use assign tag to set this field
+	UPROPERTY(Transient)
+	FGameplayTag gameplayTag = FGameplayTag::EmptyTag;
 
 	/// Attempt to get an objective by its identifier
 	const FSuqsObjective* FindObjective(const FName& Identifier) const;

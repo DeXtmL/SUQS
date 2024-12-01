@@ -374,6 +374,7 @@ void USuqsQuestState::FinishLoad()
 	bIsLoading = false;
 }
 
+
 void USuqsQuestState::NotifyObjectiveStatusChanged()
 {
 	// Re-scan the objectives from top to bottom (this allows ANY change to have been made, including backtracking)
@@ -539,6 +540,18 @@ void USuqsQuestState::MaybeNotifyStatusChange()
 		Progression->ProcessQuestStatusChange(this);
 		ResolveBarrier.bPending = false;
 	}
+}
+
+
+
+
+const FGameplayTag& USuqsQuestState::GetGameplayTag() const
+{
+	return QuestDefinition ? QuestDefinition->gameplayTag : FGameplayTag::EmptyTag;
+}
+const FGameplayTag& USuqsQuestState::AssignGameplayTag(const FGameplayTag& tag)
+{
+	return ((FSuqsQuest*)QuestDefinition)->gameplayTag = tag;
 }
 
 //PRAGMA_ENABLE_OPTIMIZATION

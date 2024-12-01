@@ -5,6 +5,7 @@
 #include "SuqsProgression.h"
 #include "SuqsWaypointSubsystem.h"
 #include "Kismet/GameplayStatics.h"
+#include "GameplayTagContainer.h"
 
 void USuqsTaskState::Initialise(const FSuqsTask* TaskDef, USuqsObjectiveState* ObjState, USuqsProgression* Root)
 {
@@ -319,4 +320,15 @@ void USuqsTaskState::FinishLoad()
 
 	// Also need to determine if the title needs formatting, since Initialise() is not called
 	bTitleNeedsFormatting = USuqsProgression::GetTextNeedsFormatting(TaskDefinition->Title); 
+}
+
+
+const FGameplayTag& USuqsTaskState::GetGameplayTag() const
+{
+	return TaskDefinition?TaskDefinition->gameplayTag :FGameplayTag::EmptyTag;
+}
+
+const FGameplayTag& USuqsTaskState::AssignGameplayTag(const FGameplayTag& tag)
+{
+	return ((FSuqsTask*)TaskDefinition)->gameplayTag = tag;
 }
